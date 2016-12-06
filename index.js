@@ -1,5 +1,5 @@
-let returnText = '';
-const ReactSymbolToString = (symbol) => {
+const ReactSymbolToString = (symbol, retText) => {
+  let returnText = retText ? retText : '';
   if (typeof symbol === 'object' && symbol.$$typeof.toString() === 'Symbol(react.element)') {
     if (symbol.props.children && symbol.props.children.length) {
       Object.keys(symbol.props.children).forEach((key) => {
@@ -9,7 +9,7 @@ const ReactSymbolToString = (symbol) => {
             returnText += childValue;
             break;
           case 'object':
-            ReactSymbolToString(childValue);
+            ReactSymbolToString(childValue, returnText);
             break;
           default:
             console.warn('Neither object or value is in children props.', childValues)
@@ -19,7 +19,6 @@ const ReactSymbolToString = (symbol) => {
     }
   } else if (typeof symbol === 'string') {
     returnText += symbol;
-    return returnText;
   }
   return returnText;
 };

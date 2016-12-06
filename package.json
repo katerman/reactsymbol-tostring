@@ -1,6 +1,6 @@
 {
   "name": "reactsymbol-tostring",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Converts react symbol react.element to string",
   "main": "index.js",
   "scripts": {
